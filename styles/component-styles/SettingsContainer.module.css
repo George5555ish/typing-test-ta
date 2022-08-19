@@ -1,0 +1,148 @@
+  .settingsContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 0.4;
+    /* border-radius: 5px; */
+  }
+  .settingsContainer button {
+    box-shadow: 1px 1px 3px 5px rgb(119, 119, 146);
+    height: 3rem;
+    color: rgb(250, 250, 250);
+    border: none;
+    background: var(--bg-clr-secondary);
+    font-size: 0.875rem;
+    font-weight: bold;
+    font-family: var(--text-font-secondary);
+    cursor: pointer;
+    transition: 0.45s ease;
+  }
+  
+  .settingsContainer button.activeButton {
+    background: #fff;
+    color: var(--text-clr-secondary);
+  }
+  
+  .timeSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+  .timeSettings h2 {
+    font-size: 1.2rem;
+    font-weight: 200;
+    font-family: var(--text-font-secondary);
+    color: var(--text-clr-secondary);
+  }
+  .timeOptions {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+    width: 100%;
+  }
+  .timeSettings .resetButton {
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: var(--bg-clr-primary);
+  }
+  .timeOptions p {
+    font-size: 0.75rem;
+    font-family: var(--text-font-secondary);
+    color: var(--text-clr-secondary);
+    border-radius: 10px;
+    background-color: var(--bg-clr-secondary);
+    box-shadow: 1px 3px 6px 6px rgb(82, 82, 137);
+    transition: 0.45s ease;
+    padding: 1rem;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+  }
+  .timeOptions p:hover,.timeOptions p.activeButton {
+    font-size: 0.75rem;
+    font-family: var(--text-font-secondary);
+    color: var(--text-clr-secondary);
+    border-radius: 10px;
+     color: var(--bg-clr-primary);
+    box-shadow: 1px 3px 6px 6px rgb(208, 208, 229);
+    padding: 1rem;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+  }
+  .customSettings{
+      transition: 0.45s ease-in;
+  }
+  
+    
+
+/* INPUT RANGE CSS */
+.timeOptions .inputRange {
+    -webkit-appearance: none;
+    appearance: none;
+    transition: 0.45s ease;
+    margin-top: 15px;
+    width: 100%;
+    height: 7px;
+    /* background: rgba(255, 255, 255, 0.6); */
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(168, 158, 222), rgb(104, 86, 185));
+    /* background-size: 70% 100%; */
+    background-repeat: no-repeat;
+  }
+  
+  .inputRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: var(--bg-clr-primary);
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 #555;
+    transition: .3s ease-in-out;
+  }
+  
+  .inputRange::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+
+  
+@media (max-width: 800px) {
+    
+  .testContainer {
+    max-width: 90%;
+    margin-top: 1rem;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 200px;
+  }
+  .settingsContainer {
+    flex: 1;
+  }
+  .typingContainer {
+    max-height: 100%;
+  }
+  .typingContainer .generatedTextContainer {
+    max-height: 300px;
+  }
+  .typingContainer .generatedTextContainer .genText{
+    width: 100%;
+  }
+  .textBoxContainer{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+   .textBoxContainer div {
+    margin-top: 20px;
+     
+   }
+}

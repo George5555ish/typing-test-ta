@@ -1,0 +1,48 @@
+.testContainer {
+  margin: 0 auto;
+  margin-top: 1rem;
+  height: 100%;
+  max-width: 90%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background: linear-gradient(
+    18deg,
+    rgb(87, 87, 96) 0%,
+    rgb(123, 123, 198) 0%,
+    rgb(204, 204, 236) 100%
+  );
+  box-shadow: 2px 2px 5px 7px rgb(125, 125, 143);
+}
+
+@media (max-width: 800px) {
+    
+  .testContainer {
+    max-width: 90%;
+    margin-top: 1rem;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 200px;
+  }
+  .settingsContainer {
+    flex: 1;
+  }
+  .typingContainer {
+    max-height: 100%;
+  }
+  .typingContainer .generatedTextContainer {
+    max-height: 300px;
+  }
+  .typingContainer .generatedTextContainer .genText{
+    width: 100%;
+  }
+  .textBoxContainer{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+   .textBoxContainer div {
+    margin-top: 20px;
+     
+   }
+}

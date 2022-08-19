@@ -2,8 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%; 
+  font-family:  Verdana, Geneva, Tahoma, sans-serif;
+  background:   url("../public/assets/keyboard.svg")  repeat left center fixed;
 }
 
 a {
@@ -11,8 +12,20 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 * {
   box-sizing: border-box;
+}
+
+:root{
+  --bg-clr-secondary: rgb(123, 123, 198);
+  --bg-clr-primary: #0B1846;
+  --text-clr-primary: #4896C1;
+  --text-font-primary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  --text-font-secondary: Verdana, Geneva, Tahoma, sans-serif
 }
 
 @media (prefers-color-scheme: dark) {

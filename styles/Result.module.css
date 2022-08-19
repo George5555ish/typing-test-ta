@@ -1,0 +1,36 @@
+.resultContainer{ 
+    width: 90%;
+    margin: 0 auto;  
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 5px rgb(97, 91, 91);
+    background: linear-gradient(18deg, rgb(87, 87, 96) 0%, rgb(123, 123, 198) 0%, rgb(204, 204, 236)  100%);
+    transition: 0.45s ease;
+    opacity: 1;
+    transform: translateY(20px);
+    animation: fadein 0.45s ease;
+}
+
+.resultContainer h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--text-font-secondary);
+    background: -webkit-linear-gradient(var(--bg-clr-secondary),rgb(137, 120, 120));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.resultBlock{
+
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 
