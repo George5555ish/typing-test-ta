@@ -5,13 +5,13 @@ import logo from "../../../../public/assets/swift.svg";
 import styles from "../../../../styles/Header.module.css";
 function Logo() {
   return (
-    <li>
+    <li className={styles.logoMain}>
       <Link href="/" className={styles.logoContainer}>
-        <Image src={logo} alt="logo" width="50px" height="50px" />
-        <span className={styles.headerTextContainer}>
+        <Image src={logo} alt="logo" width="50px" height="50px" /> 
+      </Link>
+      <span className={styles.headerTextContainer}>
           <strong>Swift</strong> Hands
         </span>
-      </Link>
     </li>
   );
 }

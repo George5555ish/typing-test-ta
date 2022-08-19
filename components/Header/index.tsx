@@ -8,9 +8,9 @@ const Header: NextPage = () => {
       <ul className={styles.headerContainer}>
         <Logo />
         <li>
-          <Link href="/" className={styles.logoContainer}>
+          <p className={styles.logoContainer}>
             Improve Your Typing Skills
-          </Link>
+          </p>
         </li>
       </ul>
     </nav>
