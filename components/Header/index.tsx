@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+import Link from "next/link";
 import Logo from "./fragments/Logo";
 import styles from "../../styles/Header.module.css";
 const Header: NextPage = () => {
@@ -7,9 +8,9 @@ const Header: NextPage = () => {
       <ul className={styles.headerContainer}>
         <Logo />
         <li>
-          <a href="/" className={styles.logoContainer}>
+          <Link href="/" className={styles.logoContainer}>
             Improve Your Typing Skills
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
