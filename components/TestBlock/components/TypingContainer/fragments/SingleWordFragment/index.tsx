@@ -1,18 +1,27 @@
 import React from "react";
-import { DESKTOP_SCREEN_WIDTH } from "../../../../../constants";
-import {SingleWordFragmentInterface} from "../../../../../interfaces";
+import { DESKTOP_SCREEN_WIDTH } from "../../../../../../constants";
+import {SingleWordFragmentInterface} from "../../../../../../interfaces";
+import EditingStateFragment from "./fragments/EditingStateFragment";
 function SingleWordFragment({
   currentWordObject,
   word,
+  childKey,
+  currentRenderedDivIndex,
+  setCurrentWordIndex,
   isCurrentWordInTypedWords,
   widthFromWindow,
-  isCurrentTypedWordIncorrect,
-  key
+  isCurrentTypedWordIncorrect
 }:SingleWordFragmentInterface) {
+
+
   return (
-    <p
-      key={key}
+  
+     <p
+     onClick={() => setCurrentWordIndex(childKey,currentWordObject,currentRenderedDivIndex)}
+      key={childKey}
       style={{
+        maxHeight: "25px",
+        cursor: "pointer",
         color:
           currentWordObject.word === word
             ? "#fff"
@@ -31,7 +40,8 @@ function SingleWordFragment({
       }}
     >
       {word}
-    </p>
+    </p>  
+    
   );
 }
 

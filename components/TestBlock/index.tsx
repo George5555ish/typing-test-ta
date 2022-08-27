@@ -12,6 +12,7 @@ import {
   getChunkedWords,
   convertTimeInSecondsToClockTime,
   validateUserGeneratedTextWithSpecialCharacters,
+  getIncorrectLettersFromTypedWords,
 } from "../../helpers";
 import { useWindowSize } from "../../hooks/getWindowDimensions";
 import useInterval from "../../hooks/useInterval";
@@ -21,8 +22,9 @@ import { defaultText } from "../../utils/default-text";
 import TabButton from "./fragments/TabButton";
 import SettingsContainer from "./components/SettingsContainer";
 import TypingContainer from "./components/TypingContainer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const TestBlock: NextPage = () => {
-
   // #############################################################################
   // #############################################################################
   // ############################# USE STATES ####################################
@@ -30,9 +32,12 @@ const TestBlock: NextPage = () => {
   // #############################################################################
 
   const [currentTimeInSeconds, setCurrentTimeInSeconds] = useState(60);
-  const [currentTime, setCurrentTime] = useState(convertTimeInSecondsToClockTime(currentTimeInSeconds));
+  const [currentTime, setCurrentTime] = useState(
+    convertTimeInSecondsToClockTime(currentTimeInSeconds)
+  );
   const [isInputDisabled, setIsInputDisabled] = useState(false);
-  const [noOfWordsTypedOnCurrentDiv, setNoOfWordsTypedOnCurrentDiv] = useState(0);
+  const [noOfWordsTypedOnCurrentDiv, setNoOfWordsTypedOnCurrentDiv] =
+    useState(0);
   const [noOfWordsByScreenSize, setNoOfWordsByScreenSize] = useState(0);
   const [divScrollValue, setDivScrollValue] = useState(0);
   const [divScrollFactor, setDivScrollFactor] = useState(0.012);
@@ -41,7 +46,7 @@ const TestBlock: NextPage = () => {
   const [isCustomTimerEnabled, setIsCustomTimerEnabled] = useState(false);
   const [customTimer, setCustomTimer] = useState(6);
   const [isCurrentTabUserGenerated, setIsCurrentTabUserGenerated] = useState(false);
-  const [isCurrentTypedWordIncorrect, setIsCurrentTypedWordIncorrect] =useState(false);
+  const [isCurrentTypedWordIncorrect, setIsCurrentTypedWordIncorrect] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [switchWordsToUserGenText, setSwitchWordsToUserGenText] = useState(false);
   const [userGeneratedText, setUserGeneratedText] = useState("");
@@ -64,7 +69,8 @@ const TestBlock: NextPage = () => {
       noOfTypedWords: number;
     }[]
   >([]);
-  const [isTextGeneratedByUserCorrect, setIsTextGeneratedByUserCorrect] = useState(true);
+  const [isTextGeneratedByUserCorrect, setIsTextGeneratedByUserCorrect] =
+    useState(true);
 
   // #############################################################################
   // #############################################################################
@@ -74,7 +80,7 @@ const TestBlock: NextPage = () => {
 
   const { width: widthFromWindow } = useWindowSize();
   const router = useRouter();
- 
+
   // ##############################################################################
   // ##############################################################################
   // ############################# USE EFFECTS ####################################
@@ -88,10 +94,10 @@ const TestBlock: NextPage = () => {
       unchunkedWords.push(...wordArr);
     });
     if (allWords.length === unchunkedWords.length) {
-      console.log(allTypedWords.length);
-      console.log(words.length);
-      console.log(allTypedWords);
-      console.log(words);
+      // console.log(allTypedWords.length);
+      // console.log(words.length);
+      // console.log(allTypedWords);
+      // console.log(words);
       setIsTimerRunning(false);
       if (allTypedWords.length > 0) {
         router.push(
@@ -140,7 +146,21 @@ const TestBlock: NextPage = () => {
     const newTime = convertTimeInSecondsToClockTime(currentTimeInSeconds);
     setCurrentTime(newTime);
   }, [currentTimeInSeconds]);
+  useEffect(() => {
 
+    const createLocalStorageHighScore = () => {
+      if (localStorage) {
+        const highScore =  localStorage.getItem('wpm'); 
+    
+        if (highScore == undefined){
+              localStorage.setItem('wpm','0');
+              localStorage.setItem('newHighScore', 'true')
+        }  
+      }  
+    }
+    createLocalStorageHighScore()
+  }, []);
+  
   useEffect(() => {
     const paragraphToType = switchWordsToUserGenText
       ? userGeneratedText
@@ -172,7 +192,7 @@ const TestBlock: NextPage = () => {
   // ############################# HELPER FUNCTIONS ##############################
   // #############################################################################
   // #############################################################################
-  
+
   const updateCountdownTimer = () => {
     setCurrentTimeInSeconds((prevTime) => prevTime - 1);
     const newTime = convertTimeInSecondsToClockTime(currentTimeInSeconds);
@@ -188,13 +208,14 @@ const TestBlock: NextPage = () => {
     if (currentTimeInSeconds < 1) {
       setStartTimer(false);
 
+      const incorrectLetters = getIncorrectLettersFromTypedWords(allTypedWords)
       router.push(
         `/result?wordsPerMinuteArray=${JSON.stringify([
           ...wordsPerMinuteArray,
           wordsTypedPerMinute,
         ])}&cwpm=${correctWordsTypedPerMinute}&totalWords=${
           stringedWords.split("|").length
-        }`
+        }&incorrectletters=${incorrectLetters}`
       );
     }
   };
@@ -306,6 +327,18 @@ const TestBlock: NextPage = () => {
   };
   return (
     <div className={styles.testContainer}>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <SettingsContainer
         switchTabs={switchTabs}
         isCustomTimerEnabled={isCustomTimerEnabled}
@@ -335,6 +368,7 @@ const TestBlock: NextPage = () => {
         divScrollValue={divScrollValue}
         words={words}
         allTypedWords={allTypedWords}
+        setAllTypedWords={setAllTypedWords}
         currentWordObject={currentWordObject}
         isCurrentTabUserGenerated={isCurrentTabUserGenerated}
         isCurrentTypedWordIncorrect={isCurrentTypedWordIncorrect}

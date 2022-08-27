@@ -6,7 +6,9 @@ const DynamicTestBlock = dynamic(
   () => import('../components/TestBlock'),
   { ssr: false }
 )
+
 const Home: NextPage = () => {
+  
   return (
     <div>
       <Head>

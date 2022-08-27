@@ -1,0 +1,50 @@
+.highScoreModalContainer {
+  z-index: 990;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(44, 44, 44);
+  overflow: hidden;
+  opacity: 0.95;
+}
+
+.highScoreModalCard {
+  position: absolute;
+  z-index: 9999;
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+  /* height: 60%; */
+  background-color: rgb(156, 130, 169);
+  box-shadow: 1px 1px 3px 5px rgb(119, 119, 146);
+  animation: floatup 1s ease;
+}
+
+@keyframes floatup {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.highScoreModalCard h2, .highScoreModalCard h3 {
+  color: #000;
+  font-size: 1.3rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.highScoreModalCard h3{
+  font-size: 1rem;
+}

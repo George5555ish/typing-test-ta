@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface TabButtonInterface {
     className: string;
     onClickHandler: () => void;
@@ -8,6 +10,7 @@ export interface TimeOptionsButtonInterface {
     className: string;
     onClickHandler: () => void;
     label: string | JSX.Element;
+    style?: {}
 }
 
 
@@ -27,7 +30,12 @@ export interface SettingsContainerInterface {
 }
 
 export interface TypingContainerInterface {
-  
+    setAllTypedWords: Dispatch<SetStateAction<{
+        word: string;
+        isTypedWordCorrect: boolean;
+        currentDiv: number;
+        noOfTypedWords: number;
+    }[]>>
     divScrollValue: number;
     words: string[][];
     allTypedWords:  {
@@ -59,7 +67,7 @@ export interface TypingContainerInterface {
 }
 
 export interface SingleWordFragmentInterface{
-    key: number;
+    childKey: number; 
     word: string;
     isCurrentWordInTypedWords:{
         word: string;
@@ -72,7 +80,12 @@ export interface SingleWordFragmentInterface{
     currentWordObject:{
         word: string;
         currentDiv: number;
-      }
+      } 
+    setCurrentWordIndex: (key: number,currentWordObject:{
+        word: string;
+        currentDiv: number;
+      },divIndex: number) => void;
+      currentRenderedDivIndex: number;
 }
 
 export interface EditableTextAreaFragmentInterface {
@@ -85,4 +98,25 @@ export interface InputTextFragmentInterface {
     isInputDisabled: boolean;
     inputValue: string;
     handleOnChange:(e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface EditingStateFragmentInterface {
+    cancelWordEditFtn: () => void;
+    saveNewWordFtn: (word: string,isCurrentWordInTypedWords:{
+        word: string;
+        isTypedWordCorrect: boolean;
+        currentDiv: number;
+        noOfTypedWords: number;
+    } | undefined) => void;
+    isCurrentWordInTypedWords: {
+        word: string;
+        isTypedWordCorrect: boolean;
+        currentDiv: number;
+        noOfTypedWords: number;
+    } | undefined
+}
+
+export interface HighScoreModalInterace {
+    typingSpeed: number;
+    setIsNewHighScore:Dispatch<SetStateAction<boolean>>
 }

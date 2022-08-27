@@ -1,0 +1,60 @@
+.editingStageContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 10px;
+  margin-bottom: 0;
+  margin-left: 15px;
+  transition: 0.45s ease;
+}
+.editingStageContainer textarea {
+  position: relative;
+  border: none;
+
+  border-radius: 5px;
+  outline: none;
+  max-width: 80px;
+  max-height: 20px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  margin: 0;
+  box-shadow: 1px 1px 3px 5px rgb(119, 119, 146);
+}
+.editStageButtons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  transition: 0.45s ease;
+  background: linear-gradient(
+    58deg,
+    rgb(87, 87, 96) 0%,
+    rgb(83, 83, 121) 0%,
+    rgb(114, 114, 153) 100%
+  );
+  border-radius: 5px;
+}
+
+.editStageButton {
+  font-size: 1rem;
+  cursor: pointer;
+
+  background-color: var(--bg-clr-secondary);
+  max-width: 80px;
+  max-height: 25px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.editStageButtonCancel {
+  font-size: 1rem;
+  cursor: pointer;
+
+  background-color: var(--bg-clr-secondary);
+  max-width: 80px;
+  max-height: 25px;
+  text-align: center;
+  margin-right: 5px;
+  margin-top: -0.42rem;
+}
