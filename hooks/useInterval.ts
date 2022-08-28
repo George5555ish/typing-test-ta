@@ -26,7 +26,7 @@ export default function useInterval(callback: () => void, restartTimer: boolean,
     if (delay !== null && restartTimer) {
       let id = setInterval(updateTimer, delay);
       return () => {
-          console.log("clearEed!")
+          // console.log("clearEed!")
         clearInterval(id);
       }
     }

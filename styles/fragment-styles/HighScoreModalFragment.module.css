@@ -22,9 +22,11 @@
   align-items: center;
   width: 70%;
   /* height: 60%; */
+  padding: 10px;
   background-color: rgb(156, 130, 169);
-  box-shadow: 1px 1px 3px 5px rgb(119, 119, 146);
+  box-shadow: 1px 1px 12px 4px rgb(162, 162, 162);
   animation: floatup 1s ease;
+  border-radius: 10px;
 }
 
 @keyframes floatup {

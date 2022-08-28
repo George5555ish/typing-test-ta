@@ -6,20 +6,32 @@ import { useEffect, useState } from "react";
 import {COOKIE_HIGH_SCORE} from "../../constants"
 import Cookie from "js-cookie";
 const Header: NextPage = () => {
-
-  useEffect(() => {
+  const [highScore, setHighScore] = useState(0) 
+  // useEffect(() => {
  
-    const highScore = Cookie.get(COOKIE_HIGH_SCORE);
-    if (!highScore){
-          Cookie.set(COOKIE_HIGH_SCORE, '0')
+  //   const highScore = Cookie.get(COOKIE_HIGH_SCORE);
+  //   if (!highScore){
+  //         Cookie.set(COOKIE_HIGH_SCORE, '0')
+  //   } else {
+  //     setHighScore(parseInt(highScore))
+  //   }
+
+  // }, [highScore]);
+
+    useEffect(() => {
+ 
+      if (localStorage){
+const highScoreLocalStorage = localStorage.getItem(COOKIE_HIGH_SCORE)
+    if (!highScoreLocalStorage){
+      localStorage.setItem(COOKIE_HIGH_SCORE, '0')
     } else {
-      setHighScore(parseInt(highScore))
+      setHighScore(parseInt(highScoreLocalStorage))
     }
+      }
+
 
   }, []);
-
-  const [highScore, setHighScore] = useState(0)
-  const [isNewHighScore, setIsNewHighScore] = useState('false')
+ 
   return (
     <nav className={styles.headerNav}>
       <ul className={styles.headerContainer}>

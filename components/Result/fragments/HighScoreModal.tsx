@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
+import Image from "next/image"
 import { HighScoreModalInterace } from "../../../interfaces";
+import HighScoreImage from "../../../public/assets/highscoreanimation.gif"
 import styles from "../../../styles/fragment-styles/HighScoreModalFragment.module.css";
 import TimeOptionsButton from "../../TestBlock/fragments/TimeOptionsButton";
 function HighScoreModal({
@@ -17,7 +19,8 @@ function HighScoreModal({
   return (
     <div className={styles.highScoreModalContainer}>
       <div className={styles.highScoreModalCard}>
-        <h2>You hit a new High Score!</h2>
+        <Image src={HighScoreImage} alt="highscoreimage" width="200px" height="200px" />
+        <h2>New High Score!</h2>
         <h3>{typingSpeed} WPM (words per minute )</h3>
         <TimeOptionsButton
           label={"Close"}
@@ -29,6 +32,7 @@ function HighScoreModal({
             padding: "10px",
             color: "#fff",
             borderRadius: "10px",
+            fontFamily:"Verdana",
             cursor: "pointer"
           }}
         />

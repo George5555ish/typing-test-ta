@@ -45,7 +45,7 @@ function TypingContainer({
     },
     divIndex: number
   ) => {
-    console.log(words);
+    // console.log(words);
 
     const isClickedWordTyped = allTypedWords.filter(
       (word) => word.currentDiv === divIndex && word.noOfTypedWords === key
@@ -88,13 +88,13 @@ function TypingContainer({
         isCurrentWordInTypedWords?.currentDiv === typedWord.currentDiv &&
         isCurrentWordInTypedWords.noOfTypedWords === typedWord.noOfTypedWords
       ) {
-        console.log( words[isCurrentWordInTypedWords.currentDiv][
-          isCurrentWordInTypedWords.noOfTypedWords
-        ] === typedWord.word)
-        console.log( words[isCurrentWordInTypedWords.currentDiv][
-          isCurrentWordInTypedWords.noOfTypedWords
-        ])
-        console.log(  typedWord.word)
+        // console.log( words[isCurrentWordInTypedWords.currentDiv][
+        //   isCurrentWordInTypedWords.noOfTypedWords
+        // ] === typedWord.word)
+        // console.log( words[isCurrentWordInTypedWords.currentDiv][
+        //   isCurrentWordInTypedWords.noOfTypedWords
+        // ])
+        // console.log(  typedWord.word)
         return {
           ...typedWord,
           isTypedWordCorrect:
